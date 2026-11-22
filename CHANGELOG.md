@@ -44,6 +44,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Start and gameplay music, win and lose melodies (2026/11/22)
 - Sound effects: button click, copied answer and footsteps (Kenney UI Audio and Impact Sounds) (2026/11/22)
 - Teacher warning bell one second before looking up (2026/11/22)
+- Pencil writing sound while copying an answer (2026/11/22)
 
 ### Changed
 
@@ -67,6 +68,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Fixed
 
 - Clock showed 9:60 instead of 9:00 when time was up (2026/11/22)
+- Win and lose sounds were swapped after renaming the music files (2026/11/22)
 
 ### Removed
 

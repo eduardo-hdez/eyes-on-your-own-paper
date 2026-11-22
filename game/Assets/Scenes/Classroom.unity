@@ -22510,8 +22510,8 @@ MonoBehaviour:
   sweepAngle: 50
   isLooking: 0
   player: {fileID: 1234987164}
-  viewDistance: 14
-  viewAngle: 40
+  viewDistance: 12
+  viewAngle: 32
   canSeePlayer: 0
   watchLight: {fileID: 1558216053}
   visionCone: {fileID: 1245733964}

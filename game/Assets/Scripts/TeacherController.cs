@@ -16,8 +16,8 @@ public class TeacherController : MonoBehaviour
 
     // Vision variables
     public GameObject player;
-    public float viewDistance = 14.0f; // Enough to reach the back of the classroom
-    public float viewAngle = 40.0f;   // Half of the cone
+    public float viewDistance = 12.0f; // Almost to the back of the classroom
+    public float viewAngle = 32.0f;   // Half of the cone
     public bool canSeePlayer = false;
     public Light watchLight;          // Light that shows where the teacher is looking
     public MeshRenderer visionCone;   // Shape on the floor that shows everything the teacher sees

@@ -20,6 +20,9 @@ public class TeacherController : MonoBehaviour
     public float viewAngle = 40.0f;   // Half of the cone
     public bool canSeePlayer = false;
     public Light watchLight;          // Light that shows where the teacher is looking
+    public MeshRenderer visionCone;   // Shape on the floor that shows everything the teacher sees
+    public Color coneColor = new Color(1f, 0.95f, 0.6f, 0.25f);  // See-through yellow
+    public Color seenColor = new Color(1f, 0.1f, 0.1f, 0.35f);   // See-through red
 
     private Quaternion busyRotation;  // Looking down at the desk
 
@@ -40,6 +43,7 @@ public class TeacherController : MonoBehaviour
     {
         busyRotation = transform.rotation;
         watchLight.enabled = false;
+        visionCone.enabled = false;
     }
     /// <summary>
     /// This method is called once per frame
@@ -75,16 +79,17 @@ public class TeacherController : MonoBehaviour
             }
         }
 
-        // The light follows the teacher and turns red when it sees the student
+        // The light follows the teacher
         watchLight.transform.position = transform.position + Vector3.up * 2.5f;
         watchLight.transform.rotation = transform.rotation * Quaternion.Euler(15, 0, 0);
         watchLight.spotAngle = viewAngle * 2;
         watchLight.range = viewDistance + 3;
 
+        // The cone turns red when it sees the student
         if (canSeePlayer)
-            watchLight.color = Color.red;
+            visionCone.material.color = seenColor;
         else
-            watchLight.color = new Color(1f, 0.9f, 0.6f);
+            visionCone.material.color = coneColor;
 
         // If the teacher sees the student out of their desk, they get caught
         if (canSeePlayer)
@@ -97,8 +102,8 @@ public class TeacherController : MonoBehaviour
 
     private void TimeCheck()
     {
-        // Every 6 minutes the teacher looks up at the class
-        if (TimeManager.Minute % 6 == 0 && !isLooking)
+        // Every 10 minutes the teacher looks up at the class
+        if (TimeManager.Minute % 10 == 0 && !isLooking)
         {
             StartCoroutine(LookAtClass());
         }
@@ -108,6 +113,7 @@ public class TeacherController : MonoBehaviour
     {
         isLooking = true;
         watchLight.enabled = true;
+        visionCone.enabled = true;
 
         float timeElapsed = 0;
 
@@ -125,5 +131,6 @@ public class TeacherController : MonoBehaviour
         isLooking = false;
         canSeePlayer = false;
         watchLight.enabled = false;
+        visionCone.enabled = false;
     }
 }

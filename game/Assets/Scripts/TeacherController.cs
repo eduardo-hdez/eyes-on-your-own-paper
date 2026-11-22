@@ -1,5 +1,5 @@
 /// <summary>
-/// This teacher controller class makes the teacher walk between waypoints and turn around to watch the students every few minutes of the exam.
+/// This teacher controller class makes the teacher walk around the classroom and stop to look around every few minutes of the exam.
 /// Standard coding documentation can be found in
 /// https://learn.microsoft.com/en-us/dotnet/csharp/language-reference/language-specification/documentation-comments
 /// </summary>
@@ -10,17 +10,15 @@ using System.Collections;
 public class TeacherController : MonoBehaviour
 {
     // Teacher variables
-    public float timeToTurn = 1.0f; // Seconds it takes to turn around
-    public float walkSpeed = 1.2f;
-    public bool isWatching = false; // True when the teacher is looking at the students
-    public Light watchLight;        // Light that turns on when the teacher is watching
+    public float walkSpeed = 1.5f;
+    public float timeToLookAround = 3.0f; // Seconds the teacher stops to look around
+    public bool isLookingAround = false;
 
     // Waypoint variables
     public Transform[] waypoints;
     private Vector3[] waypointPositions; // The waypoints are children of the teacher, so save where they are
     private int currentWaypoint = 0;
 
-    private bool isTurning = false;
     private Animator animator;
 
     public void OnEnable()
@@ -51,82 +49,53 @@ public class TeacherController : MonoBehaviour
     /// </summary>
     void Update()
     {
-        if (isWatching)
-        {
-            // If the teacher is watching and the student is not at their desk, they get caught
-            GameManager manager = Object.FindAnyObjectByType<GameManager>();
-            if (manager != null && !manager.atDesk)
-                manager.Lose("The teacher caught you!");
-
-            animator.SetFloat("speed", 0);
-        }
-        else if (!isTurning)
-        {
-            // Walk to the next waypoint
-            Vector3 target = waypointPositions[currentWaypoint];
-            target.y = transform.position.y;
-            transform.position = Vector3.MoveTowards(transform.position, target, walkSpeed * Time.deltaTime);
-
-            Vector3 direction = target - transform.position;
-            if (direction.sqrMagnitude > 0.001f)
-                transform.rotation = Quaternion.LookRotation(direction);
-
-            if (Vector3.Distance(transform.position, target) < 0.05f)
-                currentWaypoint = (currentWaypoint + 1) % waypointPositions.Length;
-
-            animator.SetFloat("speed", 1);
-        }
-        else
+        if (isLookingAround)
         {
             animator.SetFloat("speed", 0);
+            return;
         }
+
+        // Walk to the next waypoint
+        Vector3 target = waypointPositions[currentWaypoint];
+        target.y = transform.position.y;
+        transform.position = Vector3.MoveTowards(transform.position, target, walkSpeed * Time.deltaTime);
+
+        Vector3 direction = target - transform.position;
+        if (direction.sqrMagnitude > 0.001f)
+            transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(direction), 8f * Time.deltaTime);
+
+        if (Vector3.Distance(transform.position, target) < 0.05f)
+            currentWaypoint = (currentWaypoint + 1) % waypointPositions.Length;
+
+        animator.SetFloat("speed", 1);
     }
 
     private void TimeCheck()
     {
-        // Every 5 minutes the teacher turns around
-        if (TimeManager.Minute % 5 == 0)
+        // Every 8 minutes the teacher stops and looks around
+        if (TimeManager.Minute % 8 == 0 && !isLookingAround)
         {
-            StartCoroutine(TurnTeacher());
+            StartCoroutine(LookAround());
         }
     }
 
-    private IEnumerator TurnTeacher()
+    private IEnumerator LookAround()
     {
-        isTurning = true;
-        bool watchNow = !isWatching;
+        isLookingAround = true;
 
-        // Stop watching right away when turning back to the board
-        if (!watchNow)
-        {
-            isWatching = false;
-            if (watchLight != null) watchLight.enabled = false;
-        }
-
-        Quaternion currentRot = transform.rotation;
-        Quaternion targetRot = Quaternion.LookRotation(Vector3.forward); // Looking at the board
-
-        if (watchNow)
-            targetRot = Quaternion.LookRotation(Vector3.back); // Looking at the students
-
+        Quaternion startRot = transform.rotation;
         float timeElapsed = 0;
 
-        while (timeElapsed < timeToTurn)
+        // Turn all the way around slowly
+        while (timeElapsed < timeToLookAround)
         {
-            transform.rotation = Quaternion.Lerp(currentRot, targetRot, timeElapsed / timeToTurn);
+            float angle = Mathf.Lerp(0, 360, timeElapsed / timeToLookAround);
+            transform.rotation = startRot * Quaternion.Euler(0, angle, 0);
             timeElapsed += Time.deltaTime;
             yield return null;
         }
 
-        transform.rotation = targetRot;
-
-        // Start watching only when the turn is done, so the student has time to run back
-        if (watchNow)
-        {
-            isWatching = true;
-            if (watchLight != null) watchLight.enabled = true;
-        }
-
-        isTurning = false;
+        transform.rotation = startRot;
+        isLookingAround = false;
     }
 }

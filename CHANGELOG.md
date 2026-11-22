@@ -42,3 +42,4 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - More students, four of them with exams to copy (2026/11/22)
 - Teacher stays at the desk and looks up to watch the class every few minutes (2026/11/22)
 - Copying an answer takes two seconds (2026/11/22)
+- Teacher vision reaches the whole classroom (2026/11/22)

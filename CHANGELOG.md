@@ -34,6 +34,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Classroom scene with HUD, win and lose panels and restart button (2026/11/22)
 - Teacher vision cone with a spot light that follows the teacher (2026/11/22)
 - Progress bar while copying an answer (2026/11/22)
+- Ground outside the classroom (2026/11/22)
+- Windows, door, rug, lamps and more props in the classroom (2026/11/22)
+- Small idle animations for the students (2026/11/22)
 
 ### Changed
 
@@ -43,3 +46,6 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Teacher stays at the desk and looks up to watch the class every few minutes (2026/11/22)
 - Copying an answer takes two seconds (2026/11/22)
 - Teacher vision reaches the whole classroom (2026/11/22)
+- Tiled classroom floor (2026/11/22)
+- Taller back and side walls with a new color (2026/11/22)
+- New Kenney props import settings (2026/11/22)

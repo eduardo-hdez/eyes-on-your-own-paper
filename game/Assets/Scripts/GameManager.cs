@@ -6,6 +6,7 @@
 
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 using TMPro;
 
 public class GameManager : MonoBehaviour
@@ -19,6 +20,7 @@ public class GameManager : MonoBehaviour
     public GameObject winPanel;
     public GameObject losePanel;
     public GameObject restartButton;
+    public Slider copyBar;               // Shows how much is left to copy an answer
 
     private int copied = 0;
     private bool finished = false;
@@ -48,6 +50,18 @@ public class GameManager : MonoBehaviour
         winPanel.SetActive(false);
         losePanel.SetActive(false);
         restartButton.SetActive(false);
+        HideCopyBar();
+    }
+
+    public void ShowCopyBar(float amount)
+    {
+        copyBar.gameObject.SetActive(true);
+        copyBar.value = amount;
+    }
+
+    public void HideCopyBar()
+    {
+        copyBar.gameObject.SetActive(false);
     }
 
     public void CopyAnswer()

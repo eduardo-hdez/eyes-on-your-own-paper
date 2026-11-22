@@ -39,6 +39,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Windows, door, rug, lamps and more props in the classroom (2026/11/22)
 - Small idle animations for the students (2026/11/22)
 - See-through vision cone on the floor that turns red when the teacher sees you (2026/11/22)
+- Start screen with a short story and instructions (2026/11/22)
 
 ### Changed
 

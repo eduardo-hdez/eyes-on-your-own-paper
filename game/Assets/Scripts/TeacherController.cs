@@ -20,7 +20,7 @@ public class TeacherController : MonoBehaviour
     public float viewAngle = 32.0f;   // Half of the cone
     public bool canSeePlayer = false;
     public Light watchLight;          // Light that shows where the teacher is looking
-    public MeshRenderer visionCone;   // Shape on the floor that shows everything the teacher sees
+    public GameObject visionCone;     // Cone picture on the floor that shows what the teacher sees
     public Color coneColor = new Color(1f, 0.95f, 0.6f, 0.25f);  // See-through yellow
     public Color seenColor = new Color(1f, 0.1f, 0.1f, 0.35f);   // See-through red
 
@@ -43,7 +43,7 @@ public class TeacherController : MonoBehaviour
     {
         busyRotation = transform.rotation;
         watchLight.enabled = false;
-        visionCone.enabled = false;
+        visionCone.SetActive(false);
     }
     /// <summary>
     /// This method is called once per frame
@@ -87,9 +87,9 @@ public class TeacherController : MonoBehaviour
 
         // The cone turns red when it sees the student
         if (canSeePlayer)
-            visionCone.material.color = seenColor;
+            visionCone.GetComponent<Renderer>().material.color = seenColor;
         else
-            visionCone.material.color = coneColor;
+            visionCone.GetComponent<Renderer>().material.color = coneColor;
 
         // If the teacher sees the student out of their desk, they get caught
         if (canSeePlayer)
@@ -113,7 +113,7 @@ public class TeacherController : MonoBehaviour
     {
         isLooking = true;
         watchLight.enabled = true;
-        visionCone.enabled = true;
+        visionCone.SetActive(true);
 
         float timeElapsed = 0;
 
@@ -131,6 +131,6 @@ public class TeacherController : MonoBehaviour
         isLooking = false;
         canSeePlayer = false;
         watchLight.enabled = false;
-        visionCone.enabled = false;
+        visionCone.SetActive(false);
     }
 }

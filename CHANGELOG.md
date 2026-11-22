@@ -35,6 +35,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Classroom scene with HUD, win and lose panels and restart button (2026/11/22)
 - Teacher vision cone with a spot light that follows the teacher (2026/11/22)
 - Progress bar while copying an answer (2026/11/22)
+- "Copying answer..." text with percentage over the progress bar (2026/11/22)
 - Grass plane outside the classroom (2026/11/22)
 - Windows, door, rug, lamps and more props in the classroom (2026/11/22)
 - Small idle animations for the students (2026/11/22)
@@ -54,6 +55,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - New Kenney props import settings (2026/11/22)
 - Answers go to random classmates every game (2026/11/22)
 - Teacher vision is a little shorter and narrower (2026/11/22)
+- Bigger, glowing answer sparkles (2026/11/22)
+- Clock shows AM (2026/11/22)
+
+### Fixed
+
+- Clock showed 9:60 instead of 9:00 when time was up (2026/11/22)
 
 ### Removed
 

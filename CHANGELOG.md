@@ -21,3 +21,18 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Project folder structure (2026/11/22)
 - Kenney assets imported (2026/11/22)
 - Classroom scene structure (2026/11/22)
+- Unity pipeline package (2026/11/22)
+- TextMesh Pro essential resources (2026/11/22)
+- Exam clock with on-screen time (2026/11/22)
+- Game manager with win and lose conditions (2026/11/22)
+- Answer copying and player desk triggers (2026/11/22)
+- Player controller with walk animation (2026/11/22)
+- Teacher patrol between waypoints and watch behavior (2026/11/22)
+- Classroom and character materials (2026/11/22)
+- Student and classmate animator controllers (2026/11/22)
+- Wall, desk, chair and character prefabs (2026/11/22)
+- Classroom scene with HUD, win and lose panels and restart button (2026/11/22)
+
+### Changed
+
+- Kenney models import settings: scale and looping animations (2026/11/22)

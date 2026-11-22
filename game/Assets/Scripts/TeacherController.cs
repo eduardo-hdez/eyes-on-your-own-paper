@@ -16,7 +16,7 @@ public class TeacherController : MonoBehaviour
 
     // Vision variables
     public GameObject player;
-    public float viewDistance = 6.0f;
+    public float viewDistance = 14.0f; // Enough to reach the back of the classroom
     public float viewAngle = 40.0f;   // Half of the cone
     public bool canSeePlayer = false;
     public Light watchLight;          // Light that shows where the teacher is looking
@@ -56,7 +56,8 @@ public class TeacherController : MonoBehaviour
         canSeePlayer = false;
 
         Vector3 eyes = transform.position + Vector3.up * 1.0f;
-        Vector3 toPlayer = player.transform.position - eyes;
+        Vector3 head = player.transform.position + Vector3.up * 0.4f; // Look at the head, over the desks
+        Vector3 toPlayer = head - eyes;
 
         // Only the floor direction matters for the angle
         Vector3 flatToPlayer = toPlayer;
@@ -76,8 +77,9 @@ public class TeacherController : MonoBehaviour
 
         // The light follows the teacher and turns red when it sees the student
         watchLight.transform.position = transform.position + Vector3.up * 2.5f;
-        watchLight.transform.rotation = transform.rotation * Quaternion.Euler(60, 0, 0);
+        watchLight.transform.rotation = transform.rotation * Quaternion.Euler(15, 0, 0);
         watchLight.spotAngle = viewAngle * 2;
+        watchLight.range = viewDistance + 3;
 
         if (canSeePlayer)
             watchLight.color = Color.red;

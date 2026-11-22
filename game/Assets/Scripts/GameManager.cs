@@ -19,6 +19,8 @@ public class GameManager : MonoBehaviour
     // UI variables
     public GameObject winPanel;
     public GameObject losePanel;
+    public TextMeshProUGUI winText;      // Big text in the WinPanel
+    public TextMeshProUGUI loseText;     // Big text in the LosePanel
     public GameObject restartButton;
     public GameObject startPanel;        // Start screen with the story and the instructions
     public Slider copyBar;              // Shows how much is left to copy an answer
@@ -136,8 +138,9 @@ public class GameManager : MonoBehaviour
     {
         if (finished) return;
         finished = true;
-        // Debug.Log("You win!");
-        statusText.text = "You win!";
+        // Debug.Log("You passed!");
+        statusText.text = "You passed!";
+        winText.text = "You passed!\n<size=50%>Nobody needs to know how.</size>";
         musicSource.Stop();
         soundSource.PlayOneShot(winSound);
         winPanel.SetActive(true);
@@ -145,12 +148,14 @@ public class GameManager : MonoBehaviour
         Time.timeScale = 0; // Stop the game
     }
 
-    public void Lose(string reason)
+    // title is the big text, message is the small text under it
+    public void Lose(string title, string message)
     {
         if (finished) return;
         finished = true;
-        // Debug.Log("You lose: " + reason);
-        statusText.text = reason;
+        // Debug.Log("You lose: " + title);
+        statusText.text = title;
+        loseText.text = title + "\n<size=50%>" + message + "</size>";
         if (myDesk != null) myDesk.material.color = Color.red;
         musicSource.Stop();
         soundSource.PlayOneShot(loseSound);
@@ -161,7 +166,7 @@ public class GameManager : MonoBehaviour
 
     private void TimeUp()
     {
-        Lose("Time is up!");
+        Lose("Time's up!", "Pencils down. You failed the exam.");
     }
 
     // The RestartButton calls this method

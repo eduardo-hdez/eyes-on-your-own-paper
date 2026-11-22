@@ -101,7 +101,7 @@ public class TeacherController : MonoBehaviour
         {
             GameManager manager = Object.FindAnyObjectByType<GameManager>();
             if (manager != null && !manager.atDesk)
-                manager.Lose("The teacher caught you!");
+                manager.Lose("You got caught!", "Eyes on your own paper!");
         }
     }
 

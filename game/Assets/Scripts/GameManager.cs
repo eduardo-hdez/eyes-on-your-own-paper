@@ -20,7 +20,8 @@ public class GameManager : MonoBehaviour
     public GameObject winPanel;
     public GameObject losePanel;
     public GameObject restartButton;
-    public Slider copyBar;               // Shows how much is left to copy an answer
+    public GameObject startPanel;        // Start screen with the story and the instructions
+    public Slider copyBar;              // Shows how much is left to copy an answer
 
     // All the classmates that could have an answer
     public Answer[] classmates;
@@ -55,6 +56,10 @@ public class GameManager : MonoBehaviour
         restartButton.SetActive(false);
         HideCopyBar();
 
+        // Show the start screen and wait until the player presses the button
+        startPanel.SetActive(true);
+        Time.timeScale = 0;
+
         // Give the answers to random classmates, different every game
         if (goal > classmates.Length) goal = classmates.Length; // Or the loop would never end
 
@@ -68,6 +73,13 @@ public class GameManager : MonoBehaviour
                 given++;
             }
         }
+    }
+
+    // The StartButton calls this method
+    public void StartGame()
+    {
+        startPanel.SetActive(false);
+        Time.timeScale = 1;
     }
 
     public void ShowCopyBar(float amount)

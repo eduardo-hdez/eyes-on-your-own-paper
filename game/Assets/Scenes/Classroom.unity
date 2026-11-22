@@ -2623,6 +2623,7 @@ GameObject:
   - component: {fileID: 51724042}
   - component: {fileID: 51724044}
   - component: {fileID: 51724043}
+  - component: {fileID: 51724045}
   m_Layer: 0
   m_Name: StudentC
   m_TagString: Untagged
@@ -2682,6 +2683,22 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1.9, y: 1, z: 1.6}
   m_Center: {x: 0, y: 0.5, z: 0.3}
+--- !u!114 &51724045
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 51724041}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7ba8c5168fbfa413bb592fab22930261, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::StudentIdle
+  lookAngle: 15
+  lookSpeed: 1
+  bobHeight: 0.03
+  bobSpeed: 5
 --- !u!1001 &64518794
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3545,6 +3562,7 @@ GameObject:
   - component: {fileID: 235356914}
   - component: {fileID: 235356916}
   - component: {fileID: 235356915}
+  - component: {fileID: 235356917}
   m_Layer: 0
   m_Name: StudentA
   m_TagString: Untagged
@@ -3604,6 +3622,22 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1.9, y: 1, z: 1.6}
   m_Center: {x: 0, y: 0.5, z: 0.3}
+--- !u!114 &235356917
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 235356913}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7ba8c5168fbfa413bb592fab22930261, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::StudentIdle
+  lookAngle: 15
+  lookSpeed: 1
+  bobHeight: 0.03
+  bobSpeed: 5
 --- !u!1 &251985912
 GameObject:
   m_ObjectHideFlags: 0
@@ -4615,6 +4649,7 @@ GameObject:
   - component: {fileID: 535241694}
   - component: {fileID: 535241696}
   - component: {fileID: 535241695}
+  - component: {fileID: 535241697}
   m_Layer: 0
   m_Name: StudentD
   m_TagString: Untagged
@@ -4674,6 +4709,22 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1.9, y: 1, z: 1.6}
   m_Center: {x: 0, y: 0.5, z: 0.3}
+--- !u!114 &535241697
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 535241693}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7ba8c5168fbfa413bb592fab22930261, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::StudentIdle
+  lookAngle: 15
+  lookSpeed: 1
+  bobHeight: 0.03
+  bobSpeed: 5
 --- !u!1 &538850824
 GameObject:
   m_ObjectHideFlags: 0
@@ -4991,6 +5042,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 559305656}
+  - component: {fileID: 559305657}
   m_Layer: 0
   m_Name: StudentF
   m_TagString: Untagged
@@ -5014,6 +5066,22 @@ Transform:
   - {fileID: 1757974887}
   m_Father: {fileID: 1991488095}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &559305657
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 559305655}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7ba8c5168fbfa413bb592fab22930261, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::StudentIdle
+  lookAngle: 15
+  lookSpeed: 1
+  bobHeight: 0.03
+  bobSpeed: 5
 --- !u!1 &564289025
 GameObject:
   m_ObjectHideFlags: 0
@@ -7708,6 +7776,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 680907996}
+  - component: {fileID: 680907997}
   m_Layer: 0
   m_Name: StudentG
   m_TagString: Untagged
@@ -7731,6 +7800,22 @@ Transform:
   - {fileID: 1493147090}
   m_Father: {fileID: 1991488095}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &680907997
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 680907995}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7ba8c5168fbfa413bb592fab22930261, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::StudentIdle
+  lookAngle: 15
+  lookSpeed: 1
+  bobHeight: 0.03
+  bobSpeed: 5
 --- !u!1001 &686860838
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -10610,6 +10695,7 @@ GameObject:
   - component: {fileID: 920915609}
   - component: {fileID: 920915611}
   - component: {fileID: 920915610}
+  - component: {fileID: 920915612}
   m_Layer: 0
   m_Name: StudentB
   m_TagString: Untagged
@@ -10669,6 +10755,22 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1.9, y: 1, z: 1.6}
   m_Center: {x: 0, y: 0.5, z: 0.3}
+--- !u!114 &920915612
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 920915608}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7ba8c5168fbfa413bb592fab22930261, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::StudentIdle
+  lookAngle: 15
+  lookSpeed: 1
+  bobHeight: 0.03
+  bobSpeed: 5
 --- !u!1 &921805925
 GameObject:
   m_ObjectHideFlags: 0
@@ -11002,6 +11104,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1060707844}
+  - component: {fileID: 1060707845}
   m_Layer: 0
   m_Name: StudentH
   m_TagString: Untagged
@@ -11025,6 +11128,22 @@ Transform:
   - {fileID: 264276926}
   m_Father: {fileID: 1991488095}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1060707845
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1060707843}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7ba8c5168fbfa413bb592fab22930261, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::StudentIdle
+  lookAngle: 15
+  lookSpeed: 1
+  bobHeight: 0.03
+  bobSpeed: 5
 --- !u!1001 &1075225742
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -11721,6 +11840,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1341017005}
+  - component: {fileID: 1341017006}
   m_Layer: 0
   m_Name: StudentE
   m_TagString: Untagged
@@ -11744,6 +11864,22 @@ Transform:
   - {fileID: 170510641}
   m_Father: {fileID: 1991488095}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1341017006
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1341017004}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7ba8c5168fbfa413bb592fab22930261, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::StudentIdle
+  lookAngle: 15
+  lookSpeed: 1
+  bobHeight: 0.03
+  bobSpeed: 5
 --- !u!1001 &1345186582
 PrefabInstance:
   m_ObjectHideFlags: 0

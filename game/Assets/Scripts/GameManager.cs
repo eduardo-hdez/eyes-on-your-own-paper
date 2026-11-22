@@ -10,7 +10,7 @@ using TMPro;
 
 public class GameManager : MonoBehaviour
 {
-    public int goal = 3;                 // How many answers the student has to copy
+    public int goal = 4;                 // How many answers the student has to copy
     public Renderer myDesk;              // Paint it with a color as feedback
     public TextMeshProUGUI statusText;   // Message on the screen
     public bool atDesk = true;           // True when the student is sitting at their own desk

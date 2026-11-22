@@ -9,7 +9,15 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
-- Project's initial commit
-- Modified .gitignore file to include unity's and macos's files
-- Pull request template
-- Base unity projecr
+- Project's initial commit (2026/11/22)
+- Modified .gitignore file to include unity's and macos's files (2026/11/22)
+- Pull request template (2026/11/22)
+- Base unity project (2026/11/22)
+
+## [0.0.1] - 2026/11/22
+
+### Added
+
+- Project folder structure (2026/11/22)
+- Kenney assets imported (2026/11/22)
+- Classroom scene structure (2026/11/22)

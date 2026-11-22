@@ -41,6 +41,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Small idle animations for the students (2026/11/22)
 - See-through vision cone on the floor that turns red when the teacher sees you (2026/11/22)
 - Start screen with a short story and instructions (2026/11/22)
+- Start and gameplay music, win and lose melodies (2026/11/22)
+- Sound effects: button click, copied answer and footsteps (Kenney UI Audio and Impact Sounds) (2026/11/22)
+- Teacher warning bell one second before looking up (2026/11/22)
 
 ### Changed
 

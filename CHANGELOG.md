@@ -68,7 +68,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Fixed
 
 - Clock showed 9:60 instead of 9:00 when time was up (2026/11/22)
-- Win and lose sounds were swapped after renaming the music files (2026/11/22)
+- Win and lose music played the wrong way around (2026/11/22)
 
 ### Removed
 

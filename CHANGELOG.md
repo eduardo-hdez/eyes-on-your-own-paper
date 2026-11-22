@@ -32,7 +32,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Student and classmate animator controllers (2026/11/22)
 - Wall, desk, chair and character prefabs (2026/11/22)
 - Classroom scene with HUD, win and lose panels and restart button (2026/11/22)
+- Teacher vision cone with a spot light that follows the teacher (2026/11/22)
+- Progress bar while copying an answer (2026/11/22)
 
 ### Changed
 
 - Kenney models import settings: scale and looping animations (2026/11/22)
+- Bigger classroom with twelve desks (2026/11/22)
+- More students, four of them with exams to copy (2026/11/22)
+- Teacher patrols the whole classroom and stops to look around (2026/11/22)
+- Copying an answer takes two seconds (2026/11/22)

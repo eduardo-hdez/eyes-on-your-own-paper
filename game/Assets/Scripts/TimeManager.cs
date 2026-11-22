@@ -40,14 +40,15 @@ public class TimeManager : MonoBehaviour
         {
             Minute++;
 
-            OnMinuteChanged?.Invoke();
-
+            // Change the hour before telling the other scripts, so the clock never shows :60
             if (Minute >= 60)
             {
                 Hour++;
-                OnHourChanged?.Invoke();
                 Minute = 0;
+                OnHourChanged?.Invoke();
             }
+
+            OnMinuteChanged?.Invoke();
 
             timer = minuteToRealTime;
         }

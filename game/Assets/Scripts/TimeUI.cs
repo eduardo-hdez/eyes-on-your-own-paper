@@ -25,7 +25,10 @@ public class TimeUI : MonoBehaviour
 
     private void UpdateTime()
     {
-        // Show the time like 08:05
-        timeText.text = $"{TimeManager.Hour.ToString("00")}:{TimeManager.Minute:00}";
+        // Show the time like 08:05 AM
+        string amPm = "AM";
+        if (TimeManager.Hour >= 12) amPm = "PM";
+
+        timeText.text = $"{TimeManager.Hour.ToString("00")}:{TimeManager.Minute:00} {amPm}";
     }
 }

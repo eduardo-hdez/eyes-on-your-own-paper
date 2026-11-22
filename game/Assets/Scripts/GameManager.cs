@@ -32,6 +32,7 @@ public class GameManager : MonoBehaviour
     // Audio variables
     public AudioSource musicSource;      // Plays the music in a loop
     public AudioSource soundSource;      // Plays the short sounds
+    public AudioSource writingSource;    // Pencil sound in a loop while copying
     public AudioClip startMusic;
     public AudioClip gameplayMusic;
     public AudioClip winSound;
@@ -108,6 +109,11 @@ public class GameManager : MonoBehaviour
     public void ShowCopyBar(float amount)
     {
         copyBar.gameObject.SetActive(true);
+
+        // Start the pencil sound only once, it keeps looping by itself
+        if (!writingSource.isPlaying)
+            writingSource.Play();
+
         copyBar.value = amount;
         copyText.text = "Copying answer... " + (int)(amount * 100) + "%";
     }
@@ -115,6 +121,7 @@ public class GameManager : MonoBehaviour
     public void HideCopyBar()
     {
         copyBar.gameObject.SetActive(false);
+        writingSource.Stop();
     }
 
     public void CopyAnswer()

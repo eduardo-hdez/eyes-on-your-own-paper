@@ -1,5 +1,5 @@
 /// <summary>
-/// This teacher controller class makes the teacher walk around the classroom and stop to look around every few minutes of the exam.
+/// This teacher controller class keeps the teacher busy at the desk and makes them look up to watch the class every few minutes of the exam.
 /// Standard coding documentation can be found in
 /// https://learn.microsoft.com/en-us/dotnet/csharp/language-reference/language-specification/documentation-comments
 /// </summary>
@@ -10,23 +10,18 @@ using System.Collections;
 public class TeacherController : MonoBehaviour
 {
     // Teacher variables
-    public float walkSpeed = 1.5f;
-    public float timeToLookAround = 3.0f; // Seconds the teacher stops to look around
-    public bool isLookingAround = false;
+    public float timeToLook = 4.0f;   // Seconds the teacher looks at the class
+    public float sweepAngle = 50.0f;  // How far left and right the teacher looks
+    public bool isLooking = false;    // True when the teacher looks up from the desk
 
     // Vision variables
     public GameObject player;
     public float viewDistance = 6.0f;
-    public float viewAngle = 40.0f;  // Half of the cone
+    public float viewAngle = 40.0f;   // Half of the cone
     public bool canSeePlayer = false;
-    public Light watchLight;         // Light that shows where the teacher is looking
+    public Light watchLight;          // Light that shows where the teacher is looking
 
-    // Waypoint variables
-    public Transform[] waypoints;
-    private Vector3[] waypointPositions; // The waypoints are children of the teacher, so save where they are
-    private int currentWaypoint = 0;
-
-    private Animator animator;
+    private Quaternion busyRotation;  // Looking down at the desk
 
     public void OnEnable()
     {
@@ -43,40 +38,17 @@ public class TeacherController : MonoBehaviour
     /// </summary>
     void Start()
     {
-        animator = GetComponentInChildren<Animator>();
-
-        waypointPositions = new Vector3[waypoints.Length];
-        for (int i = 0; i < waypoints.Length; i++)
-        {
-            waypointPositions[i] = waypoints[i].position;
-        }
+        busyRotation = transform.rotation;
+        watchLight.enabled = false;
     }
     /// <summary>
     /// This method is called once per frame
     /// </summary>
     void Update()
     {
-        CheckVision();
-
-        if (isLookingAround)
-        {
-            animator.SetFloat("speed", 0);
-            return;
-        }
-
-        // Walk to the next waypoint
-        Vector3 target = waypointPositions[currentWaypoint];
-        target.y = transform.position.y;
-        transform.position = Vector3.MoveTowards(transform.position, target, walkSpeed * Time.deltaTime);
-
-        Vector3 direction = target - transform.position;
-        if (direction.sqrMagnitude > 0.001f)
-            transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(direction), 8f * Time.deltaTime);
-
-        if (Vector3.Distance(transform.position, target) < 0.05f)
-            currentWaypoint = (currentWaypoint + 1) % waypointPositions.Length;
-
-        animator.SetFloat("speed", 1);
+        // The teacher only sees the class while looking up
+        if (isLooking)
+            CheckVision();
     }
 
     private void CheckVision()
@@ -123,30 +95,33 @@ public class TeacherController : MonoBehaviour
 
     private void TimeCheck()
     {
-        // Every 8 minutes the teacher stops and looks around
-        if (TimeManager.Minute % 8 == 0 && !isLookingAround)
+        // Every 6 minutes the teacher looks up at the class
+        if (TimeManager.Minute % 6 == 0 && !isLooking)
         {
-            StartCoroutine(LookAround());
+            StartCoroutine(LookAtClass());
         }
     }
 
-    private IEnumerator LookAround()
+    private IEnumerator LookAtClass()
     {
-        isLookingAround = true;
+        isLooking = true;
+        watchLight.enabled = true;
 
-        Quaternion startRot = transform.rotation;
         float timeElapsed = 0;
 
-        // Turn all the way around slowly
-        while (timeElapsed < timeToLookAround)
+        // Look from one side of the classroom to the other
+        while (timeElapsed < timeToLook)
         {
-            float angle = Mathf.Lerp(0, 360, timeElapsed / timeToLookAround);
-            transform.rotation = startRot * Quaternion.Euler(0, angle, 0);
+            float angle = Mathf.Lerp(-sweepAngle, sweepAngle, timeElapsed / timeToLook);
+            transform.rotation = busyRotation * Quaternion.Euler(0, angle, 0);
             timeElapsed += Time.deltaTime;
             yield return null;
         }
 
-        transform.rotation = startRot;
-        isLookingAround = false;
+        // Back to work
+        transform.rotation = busyRotation;
+        isLooking = false;
+        canSeePlayer = false;
+        watchLight.enabled = false;
     }
 }

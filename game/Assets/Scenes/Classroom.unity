@@ -6777,7 +6777,7 @@ MonoBehaviour:
 
     You did not study at all. Your classmates did.
 
-    The teacher is busy at the desk, but every few minutes they look up at the class.'
+    The teacher is busy at the desk, but every few minutes she looks up at the class.'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -7808,7 +7808,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Answers: 0 / 3'
+  m_text: 'Answers: 0 / 4'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 722690513}

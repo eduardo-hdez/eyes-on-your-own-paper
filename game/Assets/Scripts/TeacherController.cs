@@ -14,6 +14,13 @@ public class TeacherController : MonoBehaviour
     public float timeToLookAround = 3.0f; // Seconds the teacher stops to look around
     public bool isLookingAround = false;
 
+    // Vision variables
+    public GameObject player;
+    public float viewDistance = 6.0f;
+    public float viewAngle = 40.0f;  // Half of the cone
+    public bool canSeePlayer = false;
+    public Light watchLight;         // Light that shows where the teacher is looking
+
     // Waypoint variables
     public Transform[] waypoints;
     private Vector3[] waypointPositions; // The waypoints are children of the teacher, so save where they are
@@ -49,6 +56,8 @@ public class TeacherController : MonoBehaviour
     /// </summary>
     void Update()
     {
+        CheckVision();
+
         if (isLookingAround)
         {
             animator.SetFloat("speed", 0);
@@ -68,6 +77,48 @@ public class TeacherController : MonoBehaviour
             currentWaypoint = (currentWaypoint + 1) % waypointPositions.Length;
 
         animator.SetFloat("speed", 1);
+    }
+
+    private void CheckVision()
+    {
+        canSeePlayer = false;
+
+        Vector3 eyes = transform.position + Vector3.up * 1.0f;
+        Vector3 toPlayer = player.transform.position - eyes;
+
+        // Only the floor direction matters for the angle
+        Vector3 flatToPlayer = toPlayer;
+        flatToPlayer.y = 0;
+
+        // Is the student close enough and inside the cone?
+        if (toPlayer.magnitude < viewDistance && Vector3.Angle(transform.forward, flatToPlayer) < viewAngle)
+        {
+            // Is there something in the middle, like a desk?
+            RaycastHit hit;
+            if (Physics.Raycast(eyes, toPlayer.normalized, out hit, viewDistance, ~0, QueryTriggerInteraction.Ignore))
+            {
+                if (hit.collider.CompareTag("Player"))
+                    canSeePlayer = true;
+            }
+        }
+
+        // The light follows the teacher and turns red when it sees the student
+        watchLight.transform.position = transform.position + Vector3.up * 2.5f;
+        watchLight.transform.rotation = transform.rotation * Quaternion.Euler(60, 0, 0);
+        watchLight.spotAngle = viewAngle * 2;
+
+        if (canSeePlayer)
+            watchLight.color = Color.red;
+        else
+            watchLight.color = new Color(1f, 0.9f, 0.6f);
+
+        // If the teacher sees the student out of their desk, they get caught
+        if (canSeePlayer)
+        {
+            GameManager manager = Object.FindAnyObjectByType<GameManager>();
+            if (manager != null && !manager.atDesk)
+                manager.Lose("The teacher caught you!");
+        }
     }
 
     private void TimeCheck()

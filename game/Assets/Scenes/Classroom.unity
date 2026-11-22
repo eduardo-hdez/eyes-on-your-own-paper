@@ -11641,17 +11641,17 @@ Light:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1558216052}
-  m_Enabled: 0
+  m_Enabled: 1
   serializedVersion: 13
   m_Type: 0
-  m_Color: {r: 1, g: 0.25, b: 0.2, a: 1}
-  m_Intensity: 4
-  m_Range: 12
-  m_SpotAngle: 95
+  m_Color: {r: 1, g: 0.9, b: 0.6, a: 1}
+  m_Intensity: 3.5
+  m_Range: 8
+  m_SpotAngle: 80
   m_InnerSpotAngle: 21.802082
   m_CookieSize2D: {x: 0.5, y: 0.5}
   m_Shadows:
-    m_Type: 0
+    m_Type: 2
     m_Resolution: -1
     m_CustomResolution: -1
     m_Strength: 1
@@ -14231,6 +14231,11 @@ MonoBehaviour:
   walkSpeed: 1.2
   timeToLookAround: 3
   isLookingAround: 0
+  player: {fileID: 1234987164}
+  viewDistance: 6
+  viewAngle: 40
+  canSeePlayer: 0
+  watchLight: {fileID: 1558216053}
   waypoints:
   - {fileID: 1677568219}
   - {fileID: 1269724521}

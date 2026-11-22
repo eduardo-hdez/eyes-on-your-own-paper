@@ -100,12 +100,12 @@ public class GameManager : MonoBehaviour
         if (finished) return;
 
         copied++;
-        Debug.Log("Answer copied (" + copied + " of " + goal + ")");
+        // Debug.Log("Answer copied (" + copied + " of " + goal + ")");
         statusText.text = "Answers: " + copied + " / " + goal;
 
         if (AllCopied)
         {
-            Debug.Log("All answers copied. Go back to your desk.");
+            // Debug.Log("All answers copied. Go back to your desk.");
             statusText.text = "Go back to your desk!";
             if (myDesk != null) myDesk.material.color = Color.green;
         }
@@ -115,7 +115,7 @@ public class GameManager : MonoBehaviour
     {
         if (finished) return;
         finished = true;
-        Debug.Log("You win!");
+        // Debug.Log("You win!");
         statusText.text = "You win!";
         winPanel.SetActive(true);
         restartButton.SetActive(true);
@@ -126,7 +126,7 @@ public class GameManager : MonoBehaviour
     {
         if (finished) return;
         finished = true;
-        Debug.Log("You lose: " + reason);
+        // Debug.Log("You lose: " + reason);
         statusText.text = reason;
         if (myDesk != null) myDesk.material.color = Color.red;
         losePanel.SetActive(true);

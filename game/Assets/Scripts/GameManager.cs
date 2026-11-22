@@ -22,6 +22,9 @@ public class GameManager : MonoBehaviour
     public GameObject restartButton;
     public Slider copyBar;               // Shows how much is left to copy an answer
 
+    // All the classmates that could have an answer
+    public Answer[] classmates;
+
     private int copied = 0;
     private bool finished = false;
 
@@ -51,6 +54,20 @@ public class GameManager : MonoBehaviour
         losePanel.SetActive(false);
         restartButton.SetActive(false);
         HideCopyBar();
+
+        // Give the answers to random classmates, different every game
+        if (goal > classmates.Length) goal = classmates.Length; // Or the loop would never end
+
+        int given = 0;
+        while (given < goal)
+        {
+            int i = Random.Range(0, classmates.Length);
+            if (!classmates[i].hasAnswer)
+            {
+                classmates[i].GiveAnswer();
+                given++;
+            }
+        }
     }
 
     public void ShowCopyBar(float amount)

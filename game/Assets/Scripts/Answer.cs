@@ -10,13 +10,21 @@ public class Answer : MonoBehaviour
 {
     public GameObject sparkles;   // Particles that show the answer can be copied
     public float copyTime = 2.0f; // Seconds the student has to stay close to copy
+    public bool hasAnswer = false; // The GameManager picks which classmates have an answer
 
     private bool copied = false;
     private float copyTimer = 0;
 
+    // The GameManager calls this method when the game starts
+    public void GiveAnswer()
+    {
+        hasAnswer = true;
+        sparkles.SetActive(true);
+    }
+
     void OnTriggerStay(Collider other)
     {
-        if (copied) return;
+        if (!hasAnswer || copied) return;
 
         if (other.CompareTag("Player"))
         {
@@ -32,14 +40,14 @@ public class Answer : MonoBehaviour
                 manager.HideCopyBar();
 
                 copied = true;
-                if (sparkles != null) sparkles.SetActive(false); // The answer is gone
+                sparkles.SetActive(false); // The answer is gone
             }
         }
     }
 
     void OnTriggerExit(Collider other)
     {
-        if (copied) return;
+        if (!hasAnswer || copied) return;
 
         if (other.CompareTag("Player"))
         {

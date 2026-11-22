@@ -62,6 +62,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Clock shows AM (2026/11/22)
 - Vision cone is now a simple picture on the floor instead of code that draws it (2026/11/22)
 - Start menu has its own canvas, separate from the game UI (2026/11/22)
+- Win and lose messages: "You passed!", "You got caught!" and "Time's up!" (2026/11/22)
 
 ### Fixed
 

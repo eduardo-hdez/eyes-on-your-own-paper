@@ -11,6 +11,12 @@ public class PlayerController : MonoBehaviour
 {
     public float speed = 3.0f;
 
+    // Footstep variables
+    public AudioSource audioSource;
+    public AudioClip[] footsteps;       // A random one plays on every step
+    public float timeBetweenSteps = 0.35f;
+    private float stepTimer = 0;
+
     private Rigidbody rb;
     private Animator animator;
     private Vector3 movement;
@@ -41,6 +47,17 @@ public class PlayerController : MonoBehaviour
         if (movement.sqrMagnitude > 0.01f)
             transform.rotation = Quaternion.Slerp(
                 transform.rotation, Quaternion.LookRotation(movement), 12f * Time.deltaTime);
+
+        // Play a footstep while the student walks
+        if (movement.sqrMagnitude > 0.01f)
+        {
+            stepTimer -= Time.deltaTime;
+            if (stepTimer <= 0)
+            {
+                audioSource.PlayOneShot(footsteps[Random.Range(0, footsteps.Length)]);
+                stepTimer = timeBetweenSteps;
+            }
+        }
     }
     /// <summary>
     /// This method is called every physics step

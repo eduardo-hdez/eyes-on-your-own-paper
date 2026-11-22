@@ -24,6 +24,11 @@ public class TeacherController : MonoBehaviour
     public Color coneColor = new Color(1f, 0.95f, 0.6f, 0.25f);  // See-through yellow
     public Color seenColor = new Color(1f, 0.1f, 0.1f, 0.35f);   // See-through red
 
+    // Audio variables
+    public AudioSource audioSource;
+    public AudioClip warningSound;    // Plays before the teacher looks up
+    public float warningTime = 1.0f;  // Seconds between the warning and the look
+
     private Quaternion busyRotation;  // Looking down at the desk
 
     public void OnEnable()
@@ -111,6 +116,10 @@ public class TeacherController : MonoBehaviour
 
     private IEnumerator LookAtClass()
     {
+        // Warn the student so they have time to run back to their desk
+        audioSource.PlayOneShot(warningSound);
+        yield return new WaitForSeconds(warningTime);
+
         isLooking = true;
         watchLight.enabled = true;
         visionCone.SetActive(true);

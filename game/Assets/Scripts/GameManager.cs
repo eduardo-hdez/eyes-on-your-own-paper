@@ -27,6 +27,16 @@ public class GameManager : MonoBehaviour
     // All the classmates that could have an answer
     public Answer[] classmates;
 
+    // Audio variables
+    public AudioSource musicSource;      // Plays the music in a loop
+    public AudioSource soundSource;      // Plays the short sounds
+    public AudioClip startMusic;
+    public AudioClip gameplayMusic;
+    public AudioClip winSound;
+    public AudioClip loseSound;
+    public AudioClip copySound;
+    public AudioClip clickSound;
+
     private int copied = 0;
     private bool finished = false;
 
@@ -60,6 +70,7 @@ public class GameManager : MonoBehaviour
         // Show the start screen and wait until the player presses the button
         startPanel.SetActive(true);
         Time.timeScale = 0;
+        PlayMusic(startMusic);
 
         // Give the answers to random classmates, different every game
         if (goal > classmates.Length) goal = classmates.Length; // Or the loop would never end
@@ -81,6 +92,15 @@ public class GameManager : MonoBehaviour
     {
         startPanel.SetActive(false);
         Time.timeScale = 1;
+        soundSource.PlayOneShot(clickSound);
+        PlayMusic(gameplayMusic);
+    }
+
+    private void PlayMusic(AudioClip music)
+    {
+        musicSource.clip = music;
+        musicSource.loop = true;
+        musicSource.Play();
     }
 
     public void ShowCopyBar(float amount)
@@ -102,6 +122,7 @@ public class GameManager : MonoBehaviour
         copied++;
         // Debug.Log("Answer copied (" + copied + " of " + goal + ")");
         statusText.text = "Answers: " + copied + " / " + goal;
+        soundSource.PlayOneShot(copySound);
 
         if (AllCopied)
         {
@@ -117,6 +138,8 @@ public class GameManager : MonoBehaviour
         finished = true;
         // Debug.Log("You win!");
         statusText.text = "You win!";
+        musicSource.Stop();
+        soundSource.PlayOneShot(winSound);
         winPanel.SetActive(true);
         restartButton.SetActive(true);
         Time.timeScale = 0; // Stop the game
@@ -129,6 +152,8 @@ public class GameManager : MonoBehaviour
         // Debug.Log("You lose: " + reason);
         statusText.text = reason;
         if (myDesk != null) myDesk.material.color = Color.red;
+        musicSource.Stop();
+        soundSource.PlayOneShot(loseSound);
         losePanel.SetActive(true);
         restartButton.SetActive(true);
         Time.timeScale = 0; // Stop the game

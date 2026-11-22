@@ -40,5 +40,5 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Kenney models import settings: scale and looping animations (2026/11/22)
 - Bigger classroom with twelve desks (2026/11/22)
 - More students, four of them with exams to copy (2026/11/22)
-- Teacher patrols the whole classroom and stops to look around (2026/11/22)
+- Teacher stays at the desk and looks up to watch the class every few minutes (2026/11/22)
 - Copying an answer takes two seconds (2026/11/22)

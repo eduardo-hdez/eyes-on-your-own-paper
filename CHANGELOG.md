@@ -11,3 +11,4 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - Project's initial commit
 - Modified .gitignore file to include unity's and macos's files
+- Pull request template

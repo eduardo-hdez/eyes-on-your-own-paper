@@ -22,6 +22,7 @@ public class GameManager : MonoBehaviour
     public GameObject restartButton;
     public GameObject startPanel;        // Start screen with the story and the instructions
     public Slider copyBar;              // Shows how much is left to copy an answer
+    public TextMeshProUGUI copyText;    // Text over the bar while copying
 
     // All the classmates that could have an answer
     public Answer[] classmates;
@@ -86,6 +87,7 @@ public class GameManager : MonoBehaviour
     {
         copyBar.gameObject.SetActive(true);
         copyBar.value = amount;
+        copyText.text = "Copying answer... " + (int)(amount * 100) + "%";
     }
 
     public void HideCopyBar()

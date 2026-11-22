@@ -15,6 +15,10 @@
 /[Uu]ser[Ss]ettings/
 *.log
 
+# macOS
+.DS_Store
+**/.DS_Store
+
 # Memory Profiler generated files
 # MemoryCaptures can get excessive in size
 # They also could contain extremely sensitive data

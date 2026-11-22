@@ -53,3 +53,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - New Kenney props import settings (2026/11/22)
 - Answers go to random classmates every game (2026/11/22)
 - Teacher vision is a little shorter and narrower (2026/11/22)
+
+### Removed
+
+- Unused teacher waypoints (2026/11/22)
